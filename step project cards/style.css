@@ -1,0 +1,14 @@
+/* стили через бутстрап, тут стараемся по-минимуму прописывать
+ */
+
+.btn {
+    margin-right: 10px;
+}
+.cards--container {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+.footer {
+    width: 100%;
+}
