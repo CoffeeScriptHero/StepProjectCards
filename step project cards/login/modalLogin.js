@@ -1,36 +1,32 @@
-const modalBtn = document.getElementById("login-btn");
-const modal = document.getElementsByClassName(".modal");
-const showModal = document.getElementsByClassName(".showModal");
+export default class ModalLogin {
+   constructor() {
+      this.modal = this.create()
+   }
+   create () {
+      const modalWrapper = document.createElement("div");
+      modalWrapper.classList.add("modal-wrapper");
 
-modalBtn.addEventListener("click", (evt) => {
-   evt.preventDefault();
-   showModal.innerHTML = `
-      <div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Вход в аккаунт</h5>
+      modalWrapper.innerHTML = `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Войти в аккаунт</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body"></div>
             </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2">&#10003;</span>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Войти</button>
-            </div>
+          </div>
         </div>
-    </div>
-</div>
-   `
-});
+        `;
 
+      return modalWrapper.firstChild;
+   }
+
+   render(content) {
+      const modalBody = this.modal.querySelector(".modal-body");
+      modalBody.append(content);
+
+      return this.modal;
+   }
+
+}
