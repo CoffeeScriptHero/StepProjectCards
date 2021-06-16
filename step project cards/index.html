@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
 </head>
 <body>
 
@@ -26,11 +27,61 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             </ul>
-            <form class="d-flex">
+            <div class="d-flex">
                 <button id="login-btn" class="btn btn-outline-primary">Log in</button>
-                <button class="btn btn-outline-primary">Create Visit</button>
-            </form>
-        </div>
+                <button id="visit-btn" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-visit">Create Visit</button>
+            </div>
+
+                <div class="modal fade" id="modal-visit" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-visit-label">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close" >
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="post-form">
+                                <div class="mb-3">
+                                    <select name="visit-select-doctor" id="visit-select-doctor">
+                                        <option value="prompt" selected>Выберите врача</option>
+                                        <option value="cardiologist">Кардиолог</option>
+                                        <option value="dentist">Стоматолог</option>
+                                        <option value="therapist">Терапевт</option>
+                                    </select>
+                                </div>
+                            <div class="mb-3">
+                                   <textarea
+                                      class="form-control"
+                                      placeholder="Цель визита.."
+                                      id="intro"
+                                   ></textarea>
+                                </div>
+                                <div class="mb-3">
+                                   <textarea
+                                      class="form-control"
+                                      placeholder="Краткое описание визита.."
+                                      id="text"
+                                   ></textarea>
+                                </div>
+                            <div class="mb-3">
+                                <select name="visit-select-priority" id="visit-select-priority">
+                                    <option value="urgency" selected>Выберите срочность визита</option>
+                                    <option value="common">Обычная</option>
+                                    <option value="priority">Приоритетная</option>
+                                    <option value="urgent">Неотложная</option>
+                                </select>
+                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-bs-dismiss="modal" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                                    <button type="submit" class="btn btn-success" value="visit-submit">Создать</button>
+                                  </div>
+                             </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+         </div>
+         
     </div>
 </nav>
 
