@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e211f7d1-3a31-4aba-a53d-10eda219da19" name="Default Changelist" comment="" />
+    <list default="true" id="e211f7d1-3a31-4aba-a53d-10eda219da19" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/step project cards/img/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/step project cards/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/step project cards/js/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/js/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/step project cards/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/step project cards/login/modalLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/login/modalLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/step project cards/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="loginProgress" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1twCtwsL1mxzZi6MK2w3YFSkdyi" />
@@ -17,10 +30,27 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/step project cards/img" />
+      <recent name="$PROJECT_DIR$/step project cards" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -31,10 +61,22 @@
       <option name="presentableId" value="Default" />
       <updated>1623670983448</updated>
       <workItem from="1623670988866" duration="25000" />
+      <workItem from="1623671094849" duration="7462000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

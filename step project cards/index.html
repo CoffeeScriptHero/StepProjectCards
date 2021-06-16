@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-body rounded>
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Our Clinic</a>
+        <a class="navbar-brand" href="#">Neo Clinic</a>
+        <img class="logo" src="img/logo.png" alt="pic">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,8 +27,8 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             </ul>
             <form class="d-flex">
-                <button class="btn btn-outline-success" type="submit">Log in</button>
-                <button class="btn btn-outline-success" type="submit">Create Visit</button>
+                <button id="login-btn" class="btn btn-outline-primary">Log in</button>
+                <button class="btn btn-outline-primary">Create Visit</button>
             </form>
         </div>
     </div>
@@ -34,6 +36,34 @@
 
 <div class="cards--container">
     <h1> No items have been added</h1>
+</div>
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Вход в аккаунт</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="input-group flex-nowrap mb-3">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                    <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping2">#</span>
+                    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Войти</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer class="footer position-absolute bottom-0 mt-auto py-3 bg-light">
@@ -50,6 +80,7 @@
 ></script>
 
 <script src="js/main.js" type="module"></script>
+
 
 </body>
 </html>
