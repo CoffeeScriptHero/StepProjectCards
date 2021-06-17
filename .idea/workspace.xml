@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e211f7d1-3a31-4aba-a53d-10eda219da19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/step project cards/img/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/step project cards/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/step project cards/js/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/js/API.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/step project cards/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/step project cards/login/modalLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/login/modalLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/step project cards/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/step project cards/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,7 @@
       <updated>1623670983448</updated>
       <workItem from="1623670988866" duration="25000" />
       <workItem from="1623671094849" duration="7462000" />
+      <workItem from="1623923236049" duration="5214000" />
     </task>
     <servers />
   </component>
@@ -78,5 +76,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
