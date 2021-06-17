@@ -28,7 +28,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             </ul>
             <div class="d-flex">
-                <button id="login-btn" class="btn btn-outline-primary">Log in</button>
+                <button id="login-btn" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#modal-login">Log in</button>
                 <button id="visit-btn" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-visit">Create Visit</button>
             </div>
 
@@ -104,35 +104,37 @@
             <button type="button" class="btn_delete btn btn-danger">Delete</button>
         </div>
     </div>
-
 </div>
 
-<div class="modal" tabindex="-1">
+<div class="modal fade" id="modal-login" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-login-label">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" id="form-login">
             <div class="modal-header">
-                <h5 class="modal-title">Вход в аккаунт</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Вход в аккаунт</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
                 <div class="input-group flex-nowrap mb-3">
                     <span class="input-group-text" id="addon-wrapping">@</span>
-                    <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control" id="user-email" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping2">#</span>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control" id="user-password" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
                 </div>
             </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Войти</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="enter">Войти</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+</div>
+
 </div>
 
 <footer class="footer position-absolute bottom-0 mt-auto py-3 bg-light">
