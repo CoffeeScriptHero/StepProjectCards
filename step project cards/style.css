@@ -2,49 +2,50 @@
  */
 
 .btn {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .cards--container {
-    display: flex;
-    justify-content: center;
-    margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
 }
 .footer {
-    width: 100%;
+  width: 100%;
 }
-
 .modal {
-    background-color: rgba(62, 60, 60, 0.36);
+  background-color: rgba(62, 60, 60, 0.36);
 }
-
 .logo {
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
 }
-.no_items{
-    text-align: center;
+.no_items {
+  text-align: center;
 }
-.cards--container{
-    max-width: 80%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
+.cards--container {
+  max-width: 80%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
 }
-.card{
-    max-width: 20%;
+.card {
+  max-width: 20%;
 }
-.list-group-item{
-    min-height: 25px;
+.list-group-item {
+  min-height: 25px;
 }
-.btn-success{
-    max-width: 50%;
-    margin-left: 25%;
+.btn-success {
+  max-width: 50%;
+  margin-left: 25%;
 }
-.btn-secondary{
-    max-width: 50%;
+.btn-secondary {
+  max-width: 50%;
 }
-.btn-danger{
-    max-width: 50%;
+.btn-danger {
+  max-width: 50%;
+}
+.hidden {
+  display: none;
 }

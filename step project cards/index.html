@@ -36,11 +36,11 @@
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close" >
+                          <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close" id="visit-header-close">
                           </button>
                         </div>
                         <div class="modal-body">
-                            <form id="post-form">
+                            <form id="post-form post-visit-form">
                                 <div class="mb-3">
                                     <select name="visit-select-doctor" id="visit-select-doctor">
                                         <option value="prompt" selected>Выберите врача</option>
@@ -52,16 +52,17 @@
                             <div class="mb-3">
                                    <textarea
                                       class="form-control"
-                                      placeholder="Цель визита.."
+                                      placeholder="Цель визита"
                                       id="intro"
                                    ></textarea>
                                 </div>
                                 <div class="mb-3">
-                                   <textarea
+                                   <input
+                                      type="text"
                                       class="form-control"
-                                      placeholder="Краткое описание визита.."
+                                      placeholder="Краткое описание визита"
                                       id="text"
-                                   ></textarea>
+                                   ></input>
                                 </div>
                             <div class="mb-3">
                                 <select name="visit-select-priority" id="visit-select-priority">
@@ -70,10 +71,55 @@
                                     <option value="priority">Приоритетная</option>
                                     <option value="urgent">Неотложная</option>
                                 </select>
+                            </div> 
+                            <div class="mb-3">
+                                <input type="text"
+                                placeholder="ФИО"
+                                class="form-control"></input>
+                            </div>
+                            <div class="mb-3 hidden" id="cardiologist-wrapper">
+                                <div class="mb-3">
+                                    <input type="text"
+                                    placeholder="Ваше обычное давление"
+                                    class="form-control"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text"
+                                    placeholder="Индекс массы тела"
+                                    class="form-control"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text"
+                                    placeholder="Перенесенные заболевания сердечно-сосудистой системы"
+                                    class="form-control"></input>
+                                </div>
+                                <div class="mb-3">
+                                <p class="mb-2">Введите дату рождения: </p>
+                                    <input type="date"
+                                    name="cardio-date"
+                                    class="form-control"></input>
+                                </div>
+                            </div>
+                            <div class="mb-3 hidden" id="dentist-wrapper">
+                                <div class="mb-3">
+                                    <p class="mb-2">Введите дату последнего посещения: </p>
+                                    <input type="date"
+                                    name="dentist-date"
+                                    class="form-control"></input>
+                                </div>
+                                </div>
+                                <div class="mb-3 hidden" id="therapist-wrapper">
+                                    <div class="mb-3">
+                                        <p class="mb-2">Введите дату рождения: </p>
+                                        <input type="date"
+                                        name="therapist-date"
+                                        class="form-control"></input>
+                                    </div>
+                                    </div>
                             </div>
                                 <div class="modal-footer">
-                                    <button type="button" data-bs-dismiss="modal" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
-                                    <button type="submit" class="btn btn-success" value="visit-submit">Создать</button>
+                                    <button type="button" data-bs-dismiss="modal" class="btn btn-danger" data-dismiss="modal" value="visit-footer-close">Закрыть</button>
+                                    <button type="submit" class="btn btn-primary" value="visit-submit">Создать</button>
                                   </div>
                              </form>
                         </div>
