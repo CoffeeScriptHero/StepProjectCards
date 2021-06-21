@@ -1,7 +1,11 @@
-export class ModalVisit {
+import API from "../API.js";
+
+const token = "22122e2a-589e-4800-b96c-0b33b81f1a02";
+
+export default class ModalVisit {
   constructor(modal = document.getElementById("modal-visit")) {
     this.modal = modal;
-    this.select = this.modal.querySelector("#visit-select-doctor");
+    this.select = this.modal.querySelector("#doctor");
     this.defaultWrapper = this.modal.querySelector(".default-wrapper");
   }
   listenChanges() {
@@ -18,8 +22,8 @@ export class ModalVisit {
     const _this = this.modal.querySelector(`#${event.target.value}-wrapper`);
     _this.classList.remove("hidden");
     _this.querySelectorAll(".form-control").forEach((formElem) => {
-      console.log(formElem);
       formElem.required = true;
+      formElem.value = "";
     });
   }
   hideFields() {
@@ -31,19 +35,25 @@ export class ModalVisit {
         wrapper.classList.add("hidden");
         wrapper.querySelectorAll(".form-control").forEach((formElem) => {
           formElem.required = false;
-          this.clearFields(formElem);
+          formElem.value = "";
         });
       }
     });
-  }
-  clearFields(formElem) {
-    formElem.value = "";
   }
   setByDefault() {
     this.defaultWrapper
       .querySelectorAll(".form-control")
       .forEach((formElem) => {
-        this.clearFields(formElem);
+        formElem.value = "";
       });
+  }
+  sendInfo() {
+    const data = new Map();
+    this.modal.querySelectorAll("[required], #comments").forEach((formElem) => {
+      if (formElem.value !== "") {
+        data.set(`${formElem.id}`, `${formElem.value}`);
+      }
+    });
+    API.postRequest(Object.fromEntries(data), API.URL, token);
   }
 }

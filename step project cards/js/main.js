@@ -1,17 +1,18 @@
 //экспортируем в этот файл
 import modalLogin from "./modules/modalLogin.js";
-import { ModalVisit } from "./modules/ModalVisit.js";
-import { visitBtn } from "./modules/Constants.js";
+import ModalVisit from "./modules/Visit.js";
+import { createVisitBtn, submitVisitBtn } from "./modules/Constants.js";
 
 const modalVisit = new ModalVisit();
 modalVisit.listenChanges();
 const modal = new modalLogin();
 
-window.addEventListener("load", () => {
+createVisitBtn.addEventListener("click", () => {
+  modalVisit.hideFields();
   modalVisit.setByDefault();
-  //   modalVisit.hideFields();
 });
 
-visitBtn.addEventListener("click", () => {
-  modalVisit.setByDefault();
+submitVisitBtn.addEventListener("click", (event) => {
+  modalVisit.sendInfo();
+  document.querySelector("#visit-header-close").click();
 });
