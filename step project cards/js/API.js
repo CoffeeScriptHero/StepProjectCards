@@ -1,87 +1,91 @@
-export default class API {
-  static URL = "https://ajax.test-danit.com/api/v2/cards";
+export default class Api {
+  constructor() {
+    this.token = localStorage.getItem('token')
+  }
 
-  static async postRequest(object, url, token) {
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(object),
+  url(direction = '') {
+    return 'https://ajax.test-danit.com/api/v2/cards/' + direction
+  }
+
+  async login(email, password) {
+    const response = await fetch(this.url('login'), {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-    });
-    return response.json();
-  }
-  static getHeaders() {
-    return {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    };
-  }
-
-  static async login(data) {
-    try {
-      return fetch(`${API.URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => {
-          return res.text(); //получаю промис
-        })
-        .then((res) => {
-          //получаю уже норм знач
-          return res;
-        });
-    } catch (error) {}
+      body: JSON.stringify({ email, password }),
+    })
+    if (response.ok) {
+      const token = await response.text()
+      this.token = token
+      localStorage.setItem('token', token)
+      localStorage.setItem('email', email)
+    }
   }
 
-  static saveToken(tokenFromResponse) {
-    API.token = tokenFromResponse;
+  getToken() {
+    return localStorage.getItem('token')
   }
 
-  static async saveCard(cardToSave) {
-    const res = await fetch(`${API.URL}/cards`, {
-      method: "POST",
-      headers: API.getHeaders(),
-      body: JSON.stringify(cardToSave),
-    });
-
-    return res.json();
+  setToken(token) {
+    this.token = token
   }
-  static async putRequest(object, cardId) {
-    const response = await fetch(`${API.URL}/${cardId}`, {
-      method: "PUT",
-      body: JSON.stringify(object),
+
+  async getCard(id) {
+    const response = await fetch(this.url(id), {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
       },
-    });
-    return await response.json();
+    })
+    return await response.json()
   }
 
-  static async deleteRequest(id) {
-    const response = await fetch(`${API.URL}/${id}`, {
-      method: "DELETE",
+  async getAllCard() {
+    const response = await fetch(this.url(), {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
       },
-    });
-    return true;
+    })
+
+    const cards = await response.json()
+    localStorage.setItem('cards', JSON.stringify(cards))
+    return cards
   }
 
-  static async getRequest() {
-    const response = await fetch(`${API.URL}`, {
-      method: "GET",
+  async addCard(obj) {
+    const response = await fetch(this.url(), {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
       },
-    });
-    return response.json().then((res) => res);
+      body: JSON.stringify(obj),
+    })
+    return await response.json()
+  }
+
+  async removeCard(id) {
+    await fetch(this.url(id), {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    })
+  }
+
+  async editCard(obj, id) {
+    const response = await fetch(this.url(id), {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+      body: JSON.stringify(obj),
+    })
+    return await response.json()
   }
 }
