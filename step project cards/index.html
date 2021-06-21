@@ -34,7 +34,6 @@
                 <button id="visit-btn" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-visit">Create Visit</button>
             </div>
 
-
                 <div class="modal fade" id="modal-visit" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-visit-label">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -46,7 +45,7 @@
                             <form id="post-form post-visit-form">
                                 <div class="default-wrapper visit-wrapper">
                                 <div class="mb-3">
-                                    <select required class="form-control" name="visit-select-doctor" id="visit-select-doctor">
+                                    <select required class="form-control" name="doctor" id="doctor">
                                         <option value="" >Выберите врача</option>
                                         <option value="cardiologist">Кардиолог</option>
                                         <option value="dentist">Стоматолог</option>
@@ -57,7 +56,7 @@
                                    <textarea
                                       class="form-control" required
                                       placeholder="Цель визита"
-                                      id="visit_desc"
+                                      id="desc"
                                    ></textarea>
                                 </div>
                                 <div class="mb-3">
@@ -65,11 +64,11 @@
                                       type="text" required
                                       class="form-control"
                                       placeholder="Краткое описание визита"
-                                      id="short_visit_desc"
+                                      id="shortDesc"
                                    ></input>
                                 </div>
                             <div class="mb-3">
-                                <select required class="form-control" name="visit-select-priority" id="visit-select-priority">
+                                <select required class="form-control" name="urgency" id="urgency">
                                     <option value="" >Выберите срочность визита</option>
                                     <option value="common">Обычная</option>
                                     <option value="priority">Приоритетная</option>
@@ -79,13 +78,13 @@
                             <div class="mb-3">
                                 <input type="text" required
                                 placeholder="ФИО"
-                                class="form-control"></input>
+                                class="form-control" id="name"></input>
                             </div>
                             <div class="mb-3">
                                 <textarea 
                                    class="form-control" 
                                    placeholder="Дополнительные комментарии (необязательно)"
-                                   id="additional-comments"
+                                   id="comments"
                                 ></textarea>
                              </div>
                             </div>
@@ -93,45 +92,45 @@
                                 <div class="mb-3">
                                     <input type="text" 
                                     placeholder="Ваше обычное давление"
-                                    class="form-control"></input>
+                                    class="form-control" id="bp"></input>
                                 </div>
                                 <div class="mb-3">
                                     <input type="text" 
                                     placeholder="Индекс массы тела"
-                                    class="form-control"></input>
+                                    class="form-control" id="weight"></input>
                                 </div>
                                 <div class="mb-3">
                                     <input type="text" 
                                     placeholder="Перенесенные заболевания сердечно-сосудистой системы"
-                                    class="form-control"></input>
+                                    class="form-control" id="diseases"></input>
                                 </div>
                                 <div class="mb-3">
                                 <p class="mb-2">Введите дату рождения: </p>
                                     <input type="date" 
-                                    name="cardio-date"
-                                    class="form-control"></input>
+                                    name="cardioDate"
+                                    class="form-control" id="cardioDate"></input>
                                 </div>
                             </div>
                             <div class="mb-3 hidden visit-wrapper" id="dentist-wrapper">
                                 <div class="mb-3">
                                     <p class="mb-2">Введите дату последнего посещения: </p>
                                     <input type="date" 
-                                    name="dentist-date"
-                                    class="form-control"></input>
+                                    name="dentistDate"
+                                    class="form-control" id="lastVisit"></input>
                                 </div>
                                 </div>
                                 <div class="mb-3 hidden visit-wrapper" id="therapist-wrapper">
                                     <div class="mb-3">
                                         <p class="mb-2">Введите дату рождения: </p>
                                         <input type="date" 
-                                        name="therapist-date"
-                                        class="form-control"></input>
+                                        name="therapyDate"
+                                        class="form-control" id="therapyDate"></input>
                                     </div>
                                     </div>
                             </div>
                                 <div class="modal-footer">
                                     <button type="button" data-bs-dismiss="modal" class="btn btn-danger"  value="visit-footer-close">Закрыть</button>
-                                    <button type="submit" class="btn btn-primary" id="visit-submit" value="visit-submit">Создать</button>
+                                    <button type="button" class="btn btn-primary" id="visit-submit" value="visit-submit">Создать</button>
                                   </div>
                              </form>
                         </div>
@@ -142,6 +141,7 @@
          
     </div>
 </nav>
+
 <h1 class="no_items"> No items have been added</h1>
 <div class="cards--container">
     <div class="card" style="width: 25rem">
