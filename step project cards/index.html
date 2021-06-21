@@ -16,8 +16,6 @@
 </head>
 <body>
 
-
-
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-body rounded>
     <div class="container-fluid">
@@ -46,10 +44,10 @@
                                 <div class="default-wrapper visit-wrapper">
                                 <div class="mb-3">
                                     <select required class="form-control" name="doctor" id="doctor">
-                                        <option value="" >Выберите врача</option>
-                                        <option value="cardiologist">Кардиолог</option>
-                                        <option value="dentist">Стоматолог</option>
-                                        <option value="therapist">Терапевт</option>
+                                        <option id="doctorOption" value="" >Выберите врача</option>
+                                        <option id="doctorOption" value="cardiologist">Кардиолог</option>
+                                        <option id="doctorOption" value="dentist">Стоматолог</option>
+                                        <option id="doctorOption" value="therapist">Терапевт</option>
                                     </select>
                                 </div>
                             <div class="mb-3">
@@ -138,31 +136,30 @@
                     </div>
                   </div>
          </div>
-         
+    </nav>
     </div>
-</nav>
 
-<h1 class="no_items"> No items have been added</h1>
-<div class="cards--container">
-    <div class="card" style="width: 25rem">
-        <ul class="list-group list-group-flush">
-            <li class="doctor list-group-item"></li>
-            <li class="full_name list-group-item"></li>
-        </ul>
-        <button type="button" class="btn_show_more btn btn-success">Show More</button>
-        <ul class="list-group list-group-flush">
-            <li class="doctor list-group-item"></li>
-            <li class="full_name list-group-item"></li>
-            <li class="full_name list-group-item"></li>
-            <li class="full_name list-group-item"></li>
-            <li class="full_name list-group-item"></li>
-            <li class="full_name list-group-item"></li>
-        </ul>
-            <button type="button" class="btn_edit btn btn-secondary">Edit</button>
-            <button type="button" class="btn_delete btn btn-danger">Delete</button>
-        </div>
-    </div>
+<div class="container">
+    <div class="cards_container">
+        <h1 class="no_items"> No items have been added</h1>
 </div>
+</div>
+
+    <template id="card-template">
+        <div class="card" style="width: 20rem;">
+            <button type="button" class="btn-close card-btn-close" aria-label="Close"></button>
+            <div class="card-body">
+              <h5 class="card-title">Визит</h5>
+              <p class="card-text card-name">ФИО: </p>
+              <p class="card-text card-doctor">Доктор: терапевт</p>
+              <div class="card-btns-wrapper mb-3 mt-3">
+              <a href="#" class="card-btn card-btn--show-more btn btn-primary">Показать больше</a>
+              <a href="#" class="card-btn card-btn--change btn btn-primary">Редактировать</a>
+            </div>
+            </div>
+          </div>
+    </template>
+
 
 <div class="modal fade" id="modal-login" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-login-label">
     <div class="modal-dialog">
