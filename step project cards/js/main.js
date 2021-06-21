@@ -12,7 +12,7 @@ createVisitBtn.addEventListener("click", () => {
   modalVisit.setByDefault();
 });
 
-submitVisitBtn.addEventListener("click", (event) => {
+submitVisitBtn.addEventListener("click", () => {
   modalVisit.sendInfo();
   document.querySelector("#visit-header-close").click();
 });
