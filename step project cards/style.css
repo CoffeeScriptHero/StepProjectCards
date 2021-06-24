@@ -30,8 +30,20 @@
   display: flex;
   justify-content: center;
 }
-.card {
-  max-width: 20%;
+.card-btns-wrapper {
+  display: inline-flex;
+}
+.card-btn {
+  padding: 5px;
+  max-height: 50px;
+}
+.card-title {
+  font-size: 1.4rem;
+}
+.card-btn-close {
+  margin-left: auto;
+  margin-top: 3px;
+  margin-right: 3px;
 }
 .list-group-item {
   min-height: 25px;

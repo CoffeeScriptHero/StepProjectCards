@@ -45,12 +45,12 @@ export default class API {
     return await response.json();
   }
 
-  static async deleteRequest(id) {
+  static async deleteRequest(id, token) {
     const response = await fetch(`${API.URL}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${localStorage.getItem(`${token}`)}`,
       },
     });
     return true;

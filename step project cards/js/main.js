@@ -3,13 +3,13 @@ import ModalLogin from './modules/ModalLogin.js';
 import { ModalVisit } from "./modules/ModalVisit.js";
 import { visitBtn, loginBtn } from "./modules/Constants.js";
 
+
 const modalVisit = new ModalVisit();
 modalVisit.listenChanges();
 
-
-window.addEventListener("load", () => {
+visitBtn.addEventListener("click", () => {
+  modalVisit.hideFields();
   modalVisit.setByDefault();
-  //   modalVisit.hideFields();
 });
 
 function showIfLog () {
@@ -41,7 +41,6 @@ function checkAuth () {
 }
 
 visitBtn.addEventListener("click", () => {
-  modalVisit.setByDefault();
+    modalVisit.setByDefault();
 });
-
 checkAuth();
