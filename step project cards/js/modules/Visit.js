@@ -27,6 +27,7 @@ export default class ModalVisit {
       formElem.value = "";
     });
   }
+
   hideFields() {
     this.modal.querySelectorAll(".visit-wrapper").forEach((wrapper) => {
       if (

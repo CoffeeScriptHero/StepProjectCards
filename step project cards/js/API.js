@@ -19,7 +19,6 @@ export default class API {
     };
   }
 
-
   static saveToken(tokenFromResponse) {
     API.token = tokenFromResponse;
   }
@@ -50,7 +49,7 @@ export default class API {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem(`${token}`)}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     return true;
@@ -64,6 +63,6 @@ export default class API {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return response.json().then((res) => res);
+    return response.json();
   }
 }

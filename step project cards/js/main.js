@@ -1,46 +1,60 @@
-import ModalLogin from './modules/ModalLogin.js';
-// import { ModalVisit } from "./modules/ModalVisit.js";
-import { visitBtn, loginBtn } from "./modules/Constants.js";
+import ModalLogin from "./modules/ModalLogin.js";
+import ModalVisit from "./modules/Visit.js";
+import {
+  createVisitBtn,
+  submitVisitBtn,
+  loginBtn,
+} from "./modules/Constants.js";
+import Card from "./modules/Card.js";
 
-// const modalVisit = new ModalVisit();
-// modalVisit.listenChanges();
-
-
-// window.addEventListener("load", () => {
-//   modalVisit.setByDefault();
-//   //   modalVisit.hideFields();
-// });
-
-function showIfLog () {
-  document.getElementById('login-btn').style.display = 'none';
-  document.getElementById('visit-btn').style.display = 'block';
-  document.getElementById('filter').style.display = 'block';
+function showIfLog() {
+  document.getElementById("login-btn").style.display = "none";
+  document.getElementById("visit-btn").style.display = "block";
+  document.getElementById("filter").style.display = "block";
 }
 
 loginBtn.addEventListener("click", async (event) => {
   let token = await new ModalLogin().getToken();
 
-  if(token !== undefined){
-    localStorage.setItem('token', token)
+  if (token !== undefined) {
+    localStorage.setItem("token", token);
     showIfLog();
+    checkAuth();
   }
-
 });
 
-function checkAuth () {
-  let token = localStorage.getItem('token')
+function checkTocken() {
+  let token = localStorage.getItem("token");
 
-  if(token){
+  if (token) {
+    return true;
+  }
+  return false;
+}
+
+function checkAuth() {
+  if (checkTocken()) {
     showIfLog();
-  } else if (!token) {
-    document.getElementById('login-btn').style.display = 'block';
-    document.getElementById('visit-btn').style.display = 'none';
-    document.getElementById('filter').style.display = 'none';
+    const card = new Card();
+    card.receiveCards();
+  } else {
+    document.getElementById("login-btn").style.display = "block";
+    document.getElementById("visit-btn").style.display = "none";
+    document.getElementById("filter").style.display = "none";
   }
 }
 
-// visitBtn.addEventListener("click", () => {
-//   modalVisit.setByDefault();
-// });
-
 checkAuth();
+
+const modalVisit = new ModalVisit();
+modalVisit.listenChanges();
+
+createVisitBtn.addEventListener("click", () => {
+  modalVisit.hideFields();
+  modalVisit.setByDefault();
+});
+
+submitVisitBtn.addEventListener("click", () => {
+  modalVisit.sendInfo();
+  document.querySelector("#visit-header-close").click();
+});
