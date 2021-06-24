@@ -16,177 +16,208 @@
 </head>
 <body>
 
-<div class="container">
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-body rounded>
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Neo Clinic</a>
-        <img class="logo" src="img/logo.png" alt="pic">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            </ul>
-            <div class="d-flex">
-                <button id="login-btn" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#modal-login">Log in</button>
-                <button id="visit-btn" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-visit">Create Visit</button>
-            </div>
 
-                <div class="modal fade" id="modal-visit" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-visit-label">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close" id="visit-header-close">
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="post-form post-visit-form">
-                                <div class="default-wrapper visit-wrapper">
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-body rounded>
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#">Neo Clinic</a>
+    <img class="logo" src="img/logo.png" alt="pic">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <div class="d-flex">
+            <button type="submit" id="login-btn" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#modal-login">Log in</button>
+            <button id="visit-btn" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-visit">Create Visit</button>
+        </div>
+
+
+        <div class="modal fade" id="modal-visit" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-visit-label">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn-close" id="visit-header-close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="post-form post-visit-form">
+                            <div class="default-wrapper visit-wrapper">
                                 <div class="mb-3">
-                                    <select required class="form-control" name="doctor" id="doctor">
-                                        <option id="doctorOption" value="" >Выберите врача</option>
-                                        <option id="doctorOption" value="cardiologist">Кардиолог</option>
-                                        <option id="doctorOption" value="dentist">Стоматолог</option>
-                                        <option id="doctorOption" value="therapist">Терапевт</option>
+                                    <select required class="form-control" name="visit-select-doctor" id="visit-select-doctor">
+                                        <option value="" >Выберите врача</option>
+                                        <option value="cardiologist">Кардиолог</option>
+                                        <option value="dentist">Стоматолог</option>
+                                        <option value="therapist">Терапевт</option>
                                     </select>
                                 </div>
-                            <div class="mb-3">
+                                <div class="mb-3">
                                    <textarea
-                                      class="form-control" required
-                                      placeholder="Цель визита"
-                                      id="desc"
+                                           class="form-control" required
+                                           placeholder="Цель визита"
+                                           id="visit_desc"
                                    ></textarea>
                                 </div>
                                 <div class="mb-3">
-                                   <input
-                                      type="text" required
-                                      class="form-control"
-                                      placeholder="Краткое описание визита"
-                                      id="shortDesc"
-                                   ></input>
+                                    <input
+                                            type="text" required
+                                            class="form-control"
+                                            placeholder="Краткое описание визита"
+                                            id="short_visit_desc"
+                                    />
                                 </div>
-                            <div class="mb-3">
-                                <select required class="form-control" name="urgency" id="urgency">
-                                    <option value="" >Выберите срочность визита</option>
-                                    <option value="common">Обычная</option>
-                                    <option value="priority">Приоритетная</option>
-                                    <option value="urgent">Неотложная</option>
-                                </select>
-                            </div> 
-                            <div class="mb-3">
-                                <input type="text" required
-                                placeholder="ФИО"
-                                class="form-control" id="name"></input>
-                            </div>
-                            <div class="mb-3">
-                                <textarea 
-                                   class="form-control" 
-                                   placeholder="Дополнительные комментарии (необязательно)"
-                                   id="comments"
+                                <div class="mb-3">
+                                    <select required class="form-control" name="visit-select-priority" id="visit-select-priority">
+                                        <option value="" >Выберите срочность визита</option>
+                                        <option value="common">Обычная</option>
+                                        <option value="priority">Приоритетная</option>
+                                        <option value="urgent">Неотложная</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" required
+                                           placeholder="ФИО"
+                                           class="form-control"/>
+                                </div>
+                                <div class="mb-3">
+                                <textarea
+                                        class="form-control"
+                                        placeholder="Дополнительные комментарии (необязательно)"
+                                        id="additional-comments"
                                 ></textarea>
-                             </div>
+                                </div>
                             </div>
                             <div class="mb-3 hidden visit-wrapper" id="cardiologist-wrapper">
                                 <div class="mb-3">
-                                    <input type="text" 
-                                    placeholder="Ваше обычное давление"
-                                    class="form-control" id="bp"></input>
+                                    <input type="text"
+                                           placeholder="Ваше обычное давление"
+                                           class="form-control"></input>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" 
-                                    placeholder="Индекс массы тела"
-                                    class="form-control" id="weight"></input>
+                                    <input type="text"
+                                           placeholder="Индекс массы тела"
+                                           class="form-control"></input>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" 
-                                    placeholder="Перенесенные заболевания сердечно-сосудистой системы"
-                                    class="form-control" id="diseases"></input>
+                                    <input type="text"
+                                           placeholder="Перенесенные заболевания сердечно-сосудистой системы"
+                                           class="form-control"></input>
                                 </div>
                                 <div class="mb-3">
-                                <p class="mb-2">Введите дату рождения: </p>
-                                    <input type="date" 
-                                    name="cardioDate"
-                                    class="form-control" id="cardioDate"></input>
+                                    <p class="mb-2">Введите дату рождения: </p>
+                                    <input type="date"
+                                           name="cardio-date"
+                                           class="form-control"></input>
                                 </div>
                             </div>
                             <div class="mb-3 hidden visit-wrapper" id="dentist-wrapper">
                                 <div class="mb-3">
                                     <p class="mb-2">Введите дату последнего посещения: </p>
-                                    <input type="date" 
-                                    name="dentistDate"
-                                    class="form-control" id="lastVisit"></input>
+                                    <input type="date"
+                                           name="dentist-date"
+                                           class="form-control"/>
                                 </div>
-                                </div>
-                                <div class="mb-3 hidden visit-wrapper" id="therapist-wrapper">
-                                    <div class="mb-3">
-                                        <p class="mb-2">Введите дату рождения: </p>
-                                        <input type="date" 
-                                        name="therapyDate"
-                                        class="form-control" id="therapyDate"></input>
-                                    </div>
-                                    </div>
                             </div>
-                                <div class="modal-footer">
-                                    <button type="button" data-bs-dismiss="modal" class="btn btn-danger"  value="visit-footer-close">Закрыть</button>
-                                    <button type="button" class="btn btn-primary" id="visit-submit" value="visit-submit">Создать</button>
-                                  </div>
-                             </form>
-                        </div>
-                      </div>
+                            <div class="mb-3 hidden visit-wrapper" id="therapist-wrapper">
+                                <div class="mb-3">
+                                    <p class="mb-2">Введите дату рождения: </p>
+                                    <input type="date"
+                                           name="therapist-date"
+                                           class="form-control"/>
+                                </div>
+                            </div>
                     </div>
-                  </div>
-         </div>
-    </nav>
+                    <div class="modal-footer">
+                        <button type="button" data-bs-dismiss="modal" class="btn btn-danger"  value="visit-footer-close">Закрыть</button>
+                        <button type="submit" class="btn btn-primary" id="visit-submit" value="visit-submit">Создать</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-<div class="container">
-    <div class="cards_container">
-        <h1 class="no_items"> No items have been added</h1>
-</div>
 </div>
 
-    <template id="card-template">
-        <div class="card" style="width: 20rem;">
-            <button type="button" class="btn-close card-btn-close" aria-label="Close"></button>
-            <div class="card-body">
-              <h5 class="card-title">Визит</h5>
-              <p class="card-text card-name">ФИО: </p>
-              <p class="card-text card-doctor">Доктор: терапевт</p>
-              <div class="card-btns-wrapper mb-3 mt-3">
-              <a href="#" class="card-btn card-btn--show-more btn btn-primary">Показать больше</a>
-              <a href="#" class="card-btn card-btn--change btn btn-primary">Редактировать</a>
+<div class="container" id="filter">
+    <div class="container container-filter">
+        <form class="container-filter--select-all" id='submitSearch'>
+            <div class="container-filter--select-input">
+                <div class="container-filter--select">
+                    <label class="label">Статус визита:</label>
+                    <select id="select-status" class="select filter-select chooseStatus">
+                        <option selected value="Все">Все</option>
+                        <option value="Открыт">Открыт</option>
+                        <option value="Завершен">Завершен</option>
+                    </select>
+                </div>
+                <div class="container-filter--select">
+                    <label class="label">Срочность:</label>
+                    <select id="select-urgency" class="select filter-select chooseUrgency">
+                        <option selected value="Все">Все</option>
+                        <option value="Обычная">Обычная</option>
+                        <option value="Приоритетная">Приоритетная</option>
+                        <option value="Неотложная">Неотложная</option>
+                    </select>
+                </div>
             </div>
-            </div>
-          </div>
-    </template>
+            <button class="btn btn-outline-primary" id='search'  type="submit">Поиск</button>
+        </form>
+    </div>
+</div>
 
+</div>
+</nav>
+<h1 class="no_items"> No items have been added</h1>
+<div class="cards--container">
+    <div class="card" style="width: 25rem">
+        <ul class="list-group list-group-flush">
+            <li class="doctor list-group-item"></li>
+            <li class="full_name list-group-item"></li>
+        </ul>
+        <button type="button" class="btn_show_more btn btn-success">Show More</button>
+        <ul class="list-group list-group-flush">
+            <li class="doctor list-group-item"></li>
+            <li class="full_name list-group-item"></li>
+            <li class="full_name list-group-item"></li>
+            <li class="full_name list-group-item"></li>
+            <li class="full_name list-group-item"></li>
+            <li class="full_name list-group-item"></li>
+        </ul>
+        <button type="button" class="btn_edit btn btn-secondary">Edit</button>
+        <button type="button" class="btn_delete btn btn-danger">Delete</button>
+    </div>
+</div>
+</div>
 
 <div class="modal fade" id="modal-login" tabindex="-1" aria-hidden="true" aria-bs-labelledby="modal-login-label">
     <div class="modal-dialog">
         <div class="modal-content" id="form-login">
             <div class="modal-header">
-                    <h5 class="modal-title">Вход в аккаунт</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title">Вход в аккаунт</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="input-group flex-nowrap mb-3">
                     <span class="input-group-text" id="addon-wrapping">@</span>
-                    <input type="email" class="form-control" id="user-email" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control" id="user-email" placeholder="Email" aria-label="Email" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping2">#</span>
-                    <input type="password" class="form-control" id="user-password" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control" id="user-password" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
                 </div>
             </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary" id="enter">Войти</button>
-                    </div>
-                </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="enter">Войти</button>
             </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 </div>
 
