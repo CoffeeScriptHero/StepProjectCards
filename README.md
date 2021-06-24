@@ -7,4 +7,4 @@
 
 **GitHub Pages:**
 
-**Login:** dzhl@com.ua Password:1234
+**Login:** dzhl@com.ua **Password:** 1234
