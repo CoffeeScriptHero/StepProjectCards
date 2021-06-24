@@ -51,19 +51,27 @@ export default class ModalVisit {
   }
   async sendInfo() {
     const data = new Map();
+    let counter = 0;
     this.modal.querySelectorAll("[required], #comments").forEach((formElem) => {
+      counter++;
       if (formElem.value !== "") {
         data.set(`${formElem.id}`, `${formElem.value}`);
       }
     });
-
-    const requestAnswer = await API.postRequest(
-      Object.fromEntries(data),
-      API.URL,
-      token
-    );
-    const card = new Card(requestAnswer);
-    card.createCard();
-    document.querySelector(".no_items").classList.add("hidden");
+    if (
+      data.size === counter ||
+      (counter - data.size === 1 &&
+        this.modal.querySelector("#comments").value === "")
+    ) {
+      const requestAnswer = await API.postRequest(
+        Object.fromEntries(data),
+        API.URL,
+        token
+      );
+      const card = new Card(requestAnswer);
+      card.createCard();
+      document.querySelector(".no_items").classList.add("hidden");
+      document.querySelector("#visit-header-close").click();
+    }
   }
 }
