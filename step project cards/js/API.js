@@ -19,24 +19,6 @@ export default class API {
     };
   }
 
-  static async login(data) {
-    try {
-      return fetch(`${API.URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => {
-          return res.text(); //получаю промис
-        })
-        .then((res) => {
-          //получаю уже норм знач
-          return res;
-        });
-    } catch (error) {}
-  }
 
   static saveToken(tokenFromResponse) {
     API.token = tokenFromResponse;
