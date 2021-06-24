@@ -37,6 +37,7 @@ export default class Card {
 
   async receiveCards() {
     const response = await API.getRequest(token);
+    console.log(response);
     if (response.length !== 0) {
       document.querySelector(".no_items").classList.add("hidden");
       response.forEach((card) => {

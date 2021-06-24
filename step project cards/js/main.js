@@ -7,6 +7,19 @@ import {
 } from "./modules/Constants.js";
 import Card from "./modules/Card.js";
 
+const modalVisit = new ModalVisit();
+modalVisit.listenChanges();
+
+createVisitBtn.addEventListener("click", () => {
+  modalVisit.hideFields();
+  modalVisit.setByDefault();
+});
+
+submitVisitBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  modalVisit.sendInfo();
+});
+
 function showIfLog() {
   document.getElementById("login-btn").style.display = "none";
   document.getElementById("visit-btn").style.display = "block";
@@ -45,16 +58,3 @@ function checkAuth() {
 }
 
 checkAuth();
-
-const modalVisit = new ModalVisit();
-modalVisit.listenChanges();
-
-createVisitBtn.addEventListener("click", () => {
-  modalVisit.hideFields();
-  modalVisit.setByDefault();
-});
-
-submitVisitBtn.addEventListener("click", () => {
-  modalVisit.sendInfo();
-  document.querySelector("#visit-header-close").click();
-});
