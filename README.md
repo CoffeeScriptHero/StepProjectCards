@@ -2,7 +2,7 @@
 
 ## Members:
 
-* Denis Kozarenko: Creation of a visit modal, Creation of cards (Add, Remove, Edit).
+* Denis Kozarenko: Creation of a visit modal, Creation of cards (Add, Remove, Edit), Cards filter.
 * Larysa Kutyrkina: Bootstrap setup, Main Page, Authorisation.
 
 **GitHub Pages:**
