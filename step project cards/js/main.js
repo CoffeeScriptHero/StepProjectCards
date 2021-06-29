@@ -4,7 +4,9 @@ import {
   createVisitBtn,
   submitVisitBtn,
   loginBtn,
+  submitVisitChg,
 } from "./modules/Constants.js";
+
 import Card from "./modules/Card.js";
 
 const modalVisit = new ModalVisit();
