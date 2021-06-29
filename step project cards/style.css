@@ -88,8 +88,8 @@
   display: block;
 }
 .container-filter {
+  max-width: 400px;
   display: flex;
-  justify-content: space-around;
 }
 .filter-search {
   width: 40%;
@@ -107,4 +107,21 @@
   text-align: center;
   padding: 0 10px;
   margin-right: 20px;
+}
+.hidden-doctor {
+  display: none;
+}
+.hidden-urgency {
+  display: none;
+}
+.choose_status {
+  margin-left: 35px;
+  margin-bottom: 10px;
+}
+.choose_urgency {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.container-filter--select-all {
+  text-align: center;
 }
