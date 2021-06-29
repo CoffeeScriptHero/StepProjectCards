@@ -1,4 +1,6 @@
 import API from "../API.js";
+import VisitChange from "./VisitChange.js";
+
 const token = "22122e2a-589e-4800-b96c-0b33b81f1a02";
 
 export default class Card {
@@ -11,13 +13,12 @@ export default class Card {
   }
 
   createCard() {
-    const fragment = document.createDocumentFragment();
-    const template = document.querySelector("#card-template").cloneNode(true);
-    let card = template.content.childNodes[1];
+    const template = document
+      .querySelector("#card-template")
+      .content.cloneNode(true);
 
-    fragment.append(this.getBasicInfo(card));
-
-    this.renderCard(fragment);
+    let card = template.childNodes[1];
+    this.renderCard(this.getBasicInfo(card));
 
     this.listenDelete(
       document.querySelector(".card:last-child"),
@@ -37,7 +38,6 @@ export default class Card {
 
   async receiveCards() {
     const response = await API.getRequest(token);
-    console.log(response);
     if (response.length !== 0) {
       document.querySelector(".no_items").classList.add("hidden");
       response.forEach((card) => {
@@ -55,109 +55,49 @@ export default class Card {
     const doctor = document.querySelector(
       `#doctorOption[value = "${this.cardInfo.doctor}"]`
     );
+    card.querySelector(".name").textContent = `Пациент: ${this.cardInfo.name}`;
 
     card.querySelector(
-      ".card-name"
-    ).textContent = `Пациент: ${this.cardInfo.name}`;
-
-    card.querySelector(
-      ".card-doctor"
+      ".doctor"
     ).textContent = `Доктор: ${doctor.textContent.toLowerCase()}`;
 
     return card;
   }
 
   getHideInfo(card) {
-    const cardContent = card.querySelector(".card-visit-content");
-    console.log(this.cardInfo);
-    const desc = document.createElement("p");
-    const shortDesc = document.createElement("p");
-    const urgency = document.createElement("p");
-    desc.classList.add("card-text", "card-desc", "hidden", "card-additional");
-    desc.textContent = `Цель визита: ${this.cardInfo.desc}`;
-    shortDesc.classList.add(
-      "card-text",
-      "card-short-desc",
-      "hidden",
-      "card-additional"
-    );
-    shortDesc.textContent = `Краткое описание визита: ${this.cardInfo.shortDesc}`;
-    urgency.classList.add(
-      "card-text",
-      "card-urgency",
-      "hidden",
-      "card-additional"
-    );
-    urgency.textContent = `Срочность визита: ${this.cardInfo.urgency}`;
-    cardContent.append(desc, shortDesc, urgency);
+    const defaultTemplate = document
+      .querySelector(`#default-template`)
+      .content.cloneNode(true);
+
+    defaultTemplate.querySelectorAll(".card-text").forEach((formElem) => {
+      formElem.textContent += `${this.cardInfo[formElem.classList[1]]}`;
+    });
+
     if (this.cardInfo.comments) {
       const comments = document.createElement("p");
-      comments.classList.add(
-        "card-text",
-        "card-comments",
-        "hidden",
-        "card-additional"
-      );
+      comments.classList.add("card-text", "comments");
       comments.textContent = `Доп. комментарии: ${this.cardInfo.comments}`;
-      cardContent.append(comments);
+      defaultTemplate.querySelector(".default-additional").append(comments);
     }
-    switch (this.cardInfo.doctor) {
-      case "cardiologist":
-        const bp = document.createElement("p");
-        const weight = document.createElement("p");
-        const diseases = document.createElement("p");
-        const cardioDate = document.createElement("p");
-        bp.classList.add("card-text", "card-bp", "hidden", "card-additional");
-        bp.textContent = `Обычное давление: ${this.cardInfo.bp}`;
-        weight.classList.add(
-          "card-text",
-          "card-weight",
-          "hidden",
-          "card-additional"
-        );
-        weight.textContent = `Индекс массы тела: ${this.cardInfo.weight}`;
-        diseases.classList.add(
-          "card-text",
-          "card-diseases",
-          "hidden",
-          "card-additional"
-        );
-        diseases.textContent = `Перенесенные заболевания сердца: ${this.cardInfo.diseases}`;
-        cardioDate.classList.add(
-          "card-text",
-          "card-cardio-date",
-          "hidden",
-          "card-additional"
-        );
-        cardioDate.textContent = `Дата рождения: ${this.cardInfo.cardioDate}`;
-        cardContent.append(bp, weight, diseases, cardioDate);
-        this.listenShowMore(card);
-        break;
-      case "therapist":
-        const therapyDate = document.createElement("p");
-        therapyDate.classList.add(
-          "card-text",
-          "card-therapy-date",
-          "hidden",
-          "card-additional"
-        );
-        therapyDate.textContent = `Дата рождения: ${this.cardInfo.therapyDate}`;
-        cardContent.append(therapyDate);
-        this.listenShowMore(card);
-        break;
-      case "dentist":
-        const lastVisit = document.createElement("p");
-        lastVisit.classList.add(
-          "card-text",
-          "card-last-visit",
-          "hidden",
-          "card-additional"
-        );
-        lastVisit.textContent = `Последний визит: ${this.cardInfo.lastVisit}`;
-        cardContent.append(lastVisit);
-        this.listenShowMore(card);
-        break;
-    }
+
+    const cardContent = card.querySelector(".card-visit-content");
+
+    card.setAttribute(`id`, `${this.cardInfo.id}`);
+
+    cardContent.append(defaultTemplate.querySelector(".default-additional"));
+
+    const additionalWrap = document
+      .querySelector(`#${this.cardInfo.doctor}-template`)
+      .content.cloneNode(true);
+
+    additionalWrap.querySelectorAll(".card-text").forEach((formElem) => {
+      formElem.textContent += `${this.cardInfo[formElem.classList[1]]}`;
+    });
+
+    cardContent.append(additionalWrap.querySelector(".card-additional"));
+
+    this.listenShowMore(card);
+    this.listenChangeCard(card);
   }
 
   listenDelete(card, cardId) {
@@ -170,21 +110,28 @@ export default class Card {
 
   listenShowMore(card) {
     card
-      .querySelector(".card-btn--show-more")
+      .querySelector(".card-btn_show-more")
       .addEventListener("click", (event) => {
         if (event.target.classList.contains("clicked")) {
           event.target.classList.remove("clicked");
-          card.querySelectorAll(".card-additional").forEach((elem) => {
-            elem.classList.add("hidden");
+          card.querySelectorAll(".card-additional").forEach((wrapper) => {
+            wrapper.classList.add("hidden");
           });
-          card.style = "max-height: 212px";
+          card.style = "max-height: 211px";
           return;
         }
         card.style = "max-height: 700px";
         event.target.classList.add("clicked");
-        card.querySelectorAll(".card-additional").forEach((elem) => {
-          elem.classList.remove("hidden");
+        card.querySelectorAll(".card-additional").forEach((wrapper) => {
+          wrapper.classList.remove("hidden");
         });
       });
+  }
+
+  listenChangeCard(card) {
+    card.querySelector(".card-btn_change").addEventListener("click", () => {
+      const modalChange = new VisitChange(card, this.cardInfo);
+      modalChange.createModalFields();
+    });
   }
 }

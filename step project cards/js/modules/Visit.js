@@ -55,7 +55,7 @@ export default class ModalVisit {
     this.modal.querySelectorAll("[required], #comments").forEach((formElem) => {
       counter++;
       if (formElem.value !== "") {
-        data.set(`${formElem.id}`, `${formElem.value}`);
+        data.set(formElem.id, formElem.value);
       }
     });
     if (
@@ -72,6 +72,8 @@ export default class ModalVisit {
       card.createCard();
       document.querySelector(".no_items").classList.add("hidden");
       document.querySelector("#visit-header-close").click();
+      this.hideFields();
+      this.setByDefault();
     }
   }
 }
