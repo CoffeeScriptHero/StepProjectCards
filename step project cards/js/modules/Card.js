@@ -1,8 +1,6 @@
 import API from "../API.js";
 import VisitChange from "./VisitChange.js";
 
-const token = "22122e2a-589e-4800-b96c-0b33b81f1a02";
-
 export default class Card {
   constructor(cardInfo) {
     this.cardInfo = cardInfo;
@@ -37,7 +35,7 @@ export default class Card {
   }
 
   async receiveCards() {
-    const response = await API.getRequest(token);
+    const response = await API.getRequest(localStorage.getItem("token"));
     if (response.length !== 0) {
       document.querySelector(".no_items").classList.add("hidden");
       response.forEach((card) => {
@@ -60,6 +58,8 @@ export default class Card {
     card.querySelector(
       ".doctor"
     ).textContent = `Доктор: ${doctor.textContent.toLowerCase()}`;
+
+    card.classList.add(`${this.cardInfo.doctor}`);
 
     return card;
   }
@@ -103,7 +103,7 @@ export default class Card {
   listenDelete(card, cardId) {
     card.querySelector(".card-btn-close").addEventListener("click", () => {
       card.remove();
-      API.deleteRequest(cardId, token);
+      API.deleteRequest(cardId, localStorage.getItem("token"));
       this.checkTitle();
     });
   }

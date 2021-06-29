@@ -4,10 +4,10 @@ import {
   createVisitBtn,
   submitVisitBtn,
   loginBtn,
-  submitVisitChg,
 } from "./modules/Constants.js";
 
 import Card from "./modules/Card.js";
+import Filter from "./modules/Filter.js";
 
 const modalVisit = new ModalVisit();
 modalVisit.listenChanges();
@@ -19,7 +19,27 @@ createVisitBtn.addEventListener("click", () => {
 
 submitVisitBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  modalVisit.sendInfo();
+  modalVisit.sendInfo().then((response) => {
+    if (typeof response === "undefined") {
+      return;
+    }
+    let doctorElem = document.querySelector("#select-doctor .chosen");
+    let filterDoctor = doctorElem.id.substring(doctorElem.id.indexOf("-") + 1);
+    let lastCard = document.querySelector(`.cards_container .card:last-child`);
+
+    if (filterDoctor !== response.doctor && filterDoctor !== "doctors") {
+      lastCard.classList.add("hidden-doctor");
+      return;
+    }
+    let urgencyElem = document.querySelector("#select-urgency .chosen");
+    let filterUrgency = urgencyElem.textContent
+      .substring(urgencyElem.textContent.indexOf(":") + 1)
+      .trim()
+      .toLowerCase();
+    if (filterUrgency !== response.urgency && filterUrgency !== "все") {
+      lastCard.classList.add("hidden-urgency");
+    }
+  });
 });
 
 function showIfLog() {
@@ -52,6 +72,9 @@ function checkAuth() {
     showIfLog();
     const card = new Card();
     card.receiveCards();
+    const filter = new Filter();
+    filter.clearFields();
+    filter.listenSearch();
   } else {
     document.getElementById("login-btn").style.display = "block";
     document.getElementById("visit-btn").style.display = "none";

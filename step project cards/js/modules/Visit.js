@@ -1,8 +1,6 @@
 import API from "../API.js";
 import Card from "./Card.js";
 
-const token = "22122e2a-589e-4800-b96c-0b33b81f1a02";
-
 export default class ModalVisit {
   constructor(modal = document.getElementById("modal-visit")) {
     this.modal = modal;
@@ -66,7 +64,7 @@ export default class ModalVisit {
       const requestAnswer = await API.postRequest(
         Object.fromEntries(data),
         API.URL,
-        token
+        localStorage.getItem("token")
       );
       const card = new Card(requestAnswer);
       card.createCard();
@@ -74,6 +72,7 @@ export default class ModalVisit {
       document.querySelector("#visit-header-close").click();
       this.hideFields();
       this.setByDefault();
+      return requestAnswer;
     }
   }
 }
